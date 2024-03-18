@@ -46,16 +46,29 @@ namespace Hangfire.JobKits.Worker
                     queueString = (await context.Request.GetFormValuesAsync("enqueued_state")).LastOrDefault();
                 }
 
+                //2024.03.13新增調整
+                //if (!string.IsNullOrEmpty(queueString))
+                //{
+                //    context.GetRecurringJobManager()
+                //        .AddOrUpdate(standbyJob.RecurringJobId, new Job(standbyJob.Method, parameters), cron, timeZone, queueString);
+                //}
+                //else
+                //{
+                //    context.GetRecurringJobManager().AddOrUpdate(standbyJob.RecurringJobId, new Job(standbyJob.Method, parameters), cron, timeZone);
+                //}
+                
+                //傳入Job Recurring Id
+                string jobId = string.IsNullOrEmpty(jobReccuringId) ? standbyJob.RecurringJobId : jobReccuringId;
+
                 if (!string.IsNullOrEmpty(queueString))
                 {
                     context.GetRecurringJobManager()
-                        .AddOrUpdate(standbyJob.RecurringJobId, new Job(standbyJob.Method, parameters), cron, timeZone, queueString);
+                        .AddOrUpdate(jobId, new Job(standbyJob.Method, parameters), cron, timeZone, queueString);
                 }
                 else
                 {
-                    context.GetRecurringJobManager().AddOrUpdate(standbyJob.RecurringJobId, new Job(standbyJob.Method, parameters), cron, timeZone);
+                    context.GetRecurringJobManager().AddOrUpdate(jobId, new Job(standbyJob.Method, parameters), cron, timeZone);
                 }
-
                 context.Response.StatusCode = 200;
             }
             catch (Exception e)
