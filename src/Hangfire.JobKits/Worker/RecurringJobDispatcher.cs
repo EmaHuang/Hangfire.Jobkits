@@ -37,6 +37,8 @@ namespace Hangfire.JobKits.Worker
 
                 var cron = (await context.Request.GetFormValuesAsync("recurring_cron")).LastOrDefault();
                 var timeZone = Options.RecurringTimeZone ?? TimeZoneInfo.Local;
+                 //2024.03.13新增調整
+                var jobReccuringId = (await context.Request.GetFormValuesAsync("job_reccuring_id")).LastOrDefault();
 
                 var parameters = await StandbyHelper.CreateParameters(context, standbyJob.Method);
                 var queueString = string.Empty;
