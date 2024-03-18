@@ -463,17 +463,37 @@ WriteLiteral(@"                                <div class=""queue-input"">
             #line 89 "..\..\Dashboard\StandbyPage.cshtml"
                              if (!string.IsNullOrEmpty(job.RecurringJobId))
                             {
+                                //2024.03.13新增調整
+                                //加入Job Recurring Id
 
             
             #line default
             #line hidden
+WriteLiteral(@"                                <div class=""queue-input"" style=""width:40%;"">
+                                    <div class="" input-group"">
+                                        <div class=""input-group-addon"">Job Recurring Id</div>
+                                        <input type=""text"" name=""job_reccuring_id"" class=""form-control"" placeholder=""");
+
+
+            
+            #line 96 "..\..\Dashboard\StandbyPage.cshtml"
+                                                                                                                Write(job.RecurringJobId);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\" />\r\n                                    </div>\r\n                               " +
+" </div>\r\n");
+
+
+
 WriteLiteral("                                <span class=\"cron-input\">\r\n                      " +
 "              <input type=\"text\" name=\"recurring_cron\" class=\"form-control\" plac" +
 "eholder=\"Cron\" value=\"");
 
 
             
-            #line 92 "..\..\Dashboard\StandbyPage.cshtml"
+            #line 100 "..\..\Dashboard\StandbyPage.cshtml"
                                                                                                                        Write(job.RecurringJobCron);
 
             
@@ -484,7 +504,7 @@ WriteLiteral("\">\r\n                                    <button class=\"btn btn
 
 
             
-            #line 93 "..\..\Dashboard\StandbyPage.cshtml"
+            #line 101 "..\..\Dashboard\StandbyPage.cshtml"
                                                                                                          Write(job.Id);
 
             
@@ -494,7 +514,7 @@ WriteLiteral("\');return false;\">");
 
 
             
-            #line 93 "..\..\Dashboard\StandbyPage.cshtml"
+            #line 101 "..\..\Dashboard\StandbyPage.cshtml"
                                                                                                                                    Write(Strings.Button_Recurring);
 
             
@@ -504,7 +524,7 @@ WriteLiteral("</button>\r\n\r\n                                </span>\r\n");
 
 
             
-            #line 96 "..\..\Dashboard\StandbyPage.cshtml"
+            #line 104 "..\..\Dashboard\StandbyPage.cshtml"
                             }
 
             
@@ -514,7 +534,7 @@ WriteLiteral("                        </form>\r\n                        <div id
 
 
             
-            #line 98 "..\..\Dashboard\StandbyPage.cshtml"
+            #line 106 "..\..\Dashboard\StandbyPage.cshtml"
                             Write(job.Id);
 
             
@@ -525,7 +545,7 @@ WriteLiteral("-alerts\" class=\"panel-alerts\"></div>\r\n                    </d
 
 
             
-            #line 101 "..\..\Dashboard\StandbyPage.cshtml"
+            #line 109 "..\..\Dashboard\StandbyPage.cshtml"
             }
 
             
